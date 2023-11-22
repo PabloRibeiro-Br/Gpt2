@@ -94,19 +94,17 @@ const handleSubmit = async (e) => {
    messageDiv.innerHTML = " ";
  
    if (response.ok) {
-     const data = await response.json();
-     const parsedData = data.bot.trim();
+     const responseData = await response.json();
+     const parsedData = responseData.bot.trim();
  
-     if (parsedData.toLowerCase().includes('só respondo sobre carros')) {
-      
-       typeText(messageDiv, "Desculpe, só respondo sobre carros.");
+     if (parsedData.toLowerCase().includes('só respondo sobre transmissões automáticas')) {
+       typeText(messageDiv, "Desculpe, só respondo sobre transmissões automáticas.");
      } else {
        typeText(messageDiv, parsedData);
      }
    } else {
      const err = await response.text();
- 
-     messageDiv.innerHTML = "Something went wrong";
+     messageDiv.innerHTML = "Algo deu errado";
      alert(err);
    }
  };
