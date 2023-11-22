@@ -14,17 +14,17 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-// Lista de palavras-chave relacionadas a carros
-const carKeywords = ['carro', 'automóvel', 'direção', 'motor'];
+// Lista de palavras-chave relacionadas a transmissão automática
+const transmissionKeywords = ['transmissão automática', 'câmbio automático', 'reparação', 'manutenção', 'problemas de transmissão', 'fluidos', 'diagnóstico', 'torque converter'];
 
-function isAboutCars(prompt) {
+function isAboutTransmission(prompt) {
  const lowerPrompt = prompt.toLowerCase();
- return carKeywords.some(keyword => lowerPrompt.includes(keyword));
+ return transmissionKeywords.some(keyword => lowerPrompt.includes(keyword));
 }
 
 app.get('/', async (req, res) => {
  res.status(200).send({
-   message: 'Olá, bem-vindo! Este é um assistente sobre carros.'
+   message: 'Olá, bem-vindo! Este é um assistente sobre transmissões automáticas de automóveis.'
  })
 })
 
@@ -32,13 +32,13 @@ app.post('/', async (req, res) => {
  try {
    const prompt = req.body.prompt;
 
-   // Verifique se o prompt está relacionado a carros
-   if (isAboutCars(prompt)) {
+   // Verifique se o prompt está relacionado a transmissões automáticas
+   if (isAboutTransmission(prompt)) {
      const response = await openai.createCompletion({
        model: "text-davinci-003",
        prompt: `${prompt}`,
        temperature: 0.5,
-       max_tokens: 3000, 
+       max_tokens: 200, 
        top_p: 0.4, 
        frequency_penalty: 0.5, 
        presence_penalty: 0, 
@@ -49,14 +49,14 @@ app.post('/', async (req, res) => {
      });
    } else {
      res.status(200).send({
-       bot: 'Desculpe, este assistente responde apenas sobre carros.'
+       bot: 'Desculpe, este assistente responde apenas sobre transmissões automáticas de automóveis.'
      });
    }
 
  } catch (error) {
    console.error(error)
-   res.status(500).send(error || 'Something went wrong');
+   res.status(500).send(error || 'Algo deu errado');
  }
 })
 
-app.listen(5000, () => console.log('AI server started on http://localhost:5000'))
+app.listen(5000, () => console.log('Servidor AI iniciado em http://localhost:5000'))
