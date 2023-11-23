@@ -97,7 +97,7 @@ const handleSubmit = async (e) => {
      const responseData = await response.json();
      const parsedData = responseData.bot.trim();
  
-     if (parsedData.toLowerCase().includes('só respondo sobre transmissões automáticas')) {
+     if (parsedData.toLowerCase().includes('sou um professor de reparação de automóveis, e sou especializado em reparação de Transmissões Automáticas.')) {
        typeText(messageDiv, "Desculpe, só respondo sobre transmissões automáticas.");
      } else {
        typeText(messageDiv, parsedData);
