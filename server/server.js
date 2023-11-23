@@ -15,7 +15,9 @@ app.use(cors())
 app.use(express.json())
 
 // Lista de palavras-chave relacionadas a transmissão automática
-const transmissionKeywords = ['transmissão automática', 'câmbio automático', 'reparação', 'manutenção', 'problemas de transmissão', 'fluidos', 'diagnóstico', 'torque converter'];
+const transmissionKeywords = ['transmissão automática', 
+'câmbio automático', 'reparação', 'manutenção', 'problemas de transmissão', 'fluidos', 'diagnóstico', 'torque converter', 'Qual lubrificante', 'Qual o óleo', 
+'qual quantidade de óleo', 'todas as transmissões automáticas', 'reaparação de câmbios de automóveis'];
 
 function isAboutTransmission(prompt) {
  const lowerPrompt = prompt.toLowerCase();
